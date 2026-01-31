@@ -187,3 +187,4 @@
 (meow-global-mode 1)
 
 (straight-use-package 'lsp-mode)
+(straight-use-package 'rustic)
