@@ -185,3 +185,5 @@
 (require 'meow)
 (meow-setup)
 (meow-global-mode 1)
+
+(straight-use-package 'lsp-mode)
