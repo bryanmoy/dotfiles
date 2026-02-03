@@ -14,8 +14,6 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(straight-use-package 'meow)
-
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   (meow-motion-define-key
@@ -182,9 +180,24 @@
    '("'" . repeat)
    '("<escape>" . ignore)))
 
-(require 'meow)
-(meow-setup)
-(meow-global-mode 1)
+(use-package straight
+  :custom (straight-use-package-by-default t))
 
-(straight-use-package 'lsp-mode)
-(straight-use-package 'rustic)
+(use-package meow
+  :config
+  (meow-setup)
+  (meow-global-mode 1))
+
+(use-package lsp-mode)
+
+(use-package lsp-ui
+  :custom
+  (lsp-ui-sideline-enable t)
+  (lsp-ui-sideline-show-diagnostics t)
+  (lsp-ui-sideline-show-code-actions t)
+  (lsp-ui-sideline-show-hover t)
+  (lsp-ui-sideline-update-mode 'line))
+
+(use-package rustic)
+
+(use-package flycheck)   
